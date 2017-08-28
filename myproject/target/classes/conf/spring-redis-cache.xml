@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+	xmlns:context="http://www.springframework.org/schema/context" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans-3.1.xsd 
+        http://code.alibabatech.com/schema/dubbo  
+        http://code.alibabatech.com/schema/dubbo/dubbo.xsd
+         http://www.springframework.org/schema/aop  
+    	http://www.springframework.org/schema/aop/spring-aop-3.1.xsd">
+
+
+	<!-- redisCache aop config -->
+
+	<!-- enum-预加载队列排序配置 -->
+	<!-- <bean id="OLDEST_FIRST"
+		class="org.springframework.beans.factory.config.FieldRetrievingFactoryBean">
+		<property name="staticField"
+			value="com.huhuvr.vrwapserver.redis.cache.type.AutoLoadQueueSortType.OLDEST_FIRST" />
+	</bean> -->
+
+	<!-- 预加载配置 -->
+	<!-- <bean id="autoLoadConfig" class="com.huhuvr.vrwapserver.redis.cache.to.AutoLoadConfig">
+		<property name="threadCnt" value="10" />
+		<property name="maxElement" value="20000" />
+		<property name="printSlowLog" value="true" />
+		<property name="slowLoadTime" value="500" />
+		<property name="sortType" value="OLDEST_FIRST" />
+		<property name="checkFromCacheBeforeLoad" value="true" />
+		<property name="autoLoadPeriod" value="50" />
+	</bean> -->
+<!--
+	<bean id="autoLoadConfig" class="com.huhuvr.vrwapserver.redis.cache.to.AutoLoadConfig">
+		<constructor-arg index="0" value="8"/>
+		<constructor-arg index="1" value="20000"/>
+		<constructor-arg index="2" value="true"/>
+		<constructor-arg index="3" value="500"/>
+		<constructor-arg index="4" value="1"/>
+		<constructor-arg index="5" value="true"/>
+		<constructor-arg index="6" value="50"/>
+	</bean>
+
+	&lt;!&ndash; 缓存拦截aop &ndash;&gt;
+	<bean id="cachePointCut" class="com.huhuvr.vrwapserver.redis.cache.ShardedCachePointCut"
+		destroy-method="destroy">
+		<constructor-arg ref="autoLoadConfig" />
+		<property name="shardedJedisPool" ref="shardedJedisPool" />
+		&lt;!&ndash; 缓存前缀 &ndash;&gt;
+		<property name="namespace" value="vr_wapserver_cache" />
+	</bean>
+
+	&lt;!&ndash; 缓存拦截aop配置 &ndash;&gt;
+	<aop:config proxy-target-class="true">
+
+		&lt;!&ndash; 环绕的查询通知 拦截Cache注解 &ndash;&gt;
+		<aop:aspect ref="cachePointCut">
+			<aop:pointcut id="daoCachePointcut" expression="@annotation(cache)" />
+			<aop:around pointcut-ref="daoCachePointcut" method="proceed" />
+		</aop:aspect>
+
+		&lt;!&ndash; 前置的删除缓存通知 拦截CacheDelete注解 &ndash;&gt;
+		&lt;!&ndash; order 参数控制 aop通知的优先级，值越小，优先级越高 ，在事务提交后删除缓存 &ndash;&gt;
+		<aop:aspect ref="cachePointCut" order="1000">
+			<aop:pointcut id="deleteCachePointcut" expression="@annotation(cacheDelete)" />
+			<aop:after-returning pointcut-ref="deleteCachePointcut"
+				method="deleteCache" returning="retVal" />
+		</aop:aspect>
+	</aop:config>
+-->
+
+
+
+</beans>

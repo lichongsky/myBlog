@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <!-- redis start -->
+    <!--<bean id="jedisPoolConfig" class="redis.clients.jedis.JedisPoolConfig">
+        &lt;!&ndash; 最大分配的对象数 &ndash;&gt;
+        <property name="maxTotal" value="${redis.maxTotal}" />
+        &lt;!&ndash; 最大能够保持idel状态的对象数 &ndash;&gt;
+        <property name="maxIdle" value="${redis.maxIdle}" />
+        &lt;!&ndash; 多长时间检查一次连接池中空闲的连接 &ndash;&gt;
+        <property name="timeBetweenEvictionRunsMillis" value="${redis.maxWait}" />
+        &lt;!&ndash; 空闲连接多长时间后会被收回 &ndash;&gt;
+        <property name="minEvictableIdleTimeMillis" value="${redis.maxGab}" />
+        &lt;!&ndash; 调用borrow 一个对象方法时，是否检查其有效性 &ndash;&gt;
+        <property name="testOnBorrow" value="${redis.testOnBorrow}" />
+        &lt;!&ndash; 调用return 一个对象方法时，是否检查其有效性 &ndash;&gt;
+        <property name="testOnReturn" value="${redis.testOnReturn}" />
+        <property name="testWhileIdle" value="${redis.testWhileIdle}" />
+    </bean>
+
+    <bean id="shardedJedisPool" class="redis.clients.jedis.ShardedJedisPool"
+          scope="singleton">
+        <constructor-arg index="0" ref="jedisPoolConfig" />
+        <constructor-arg index="1">
+            <list>
+                <bean class="redis.clients.jedis.JedisShardInfo">
+                    <constructor-arg name="host" value="${redis.host}" />
+                    <constructor-arg name="port" value="${redis.port}" />
+                    <constructor-arg name="timeout" value="${redis.timeout}" />
+                </bean>
+                &lt;!&ndash; <bean class="redis.clients.jedis.JedisShardInfo">
+                    <constructor-arg name="host" value="${redis2.host}" />
+                    <constructor-arg name="port" value="${redis2.port}" />
+                    <constructor-arg name="timeout" value="${redis.timeout}" />
+                </bean> &ndash;&gt;
+            </list>
+        </constructor-arg>
+    </bean>-->
+    <!-- redis end -->
+</beans>

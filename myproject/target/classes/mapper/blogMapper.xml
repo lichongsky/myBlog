@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lichong.dao.BloggerMapper">
+
+    <resultMap id="Blogger" type="com.lichong.to.Blogger">
+        <id column="ID" property="id"/>
+        <result column="USERNAME" property="userName"/>
+        <result column="PASSWORD" property="password"/>
+        <result column="PROFILE" property="profile"/>
+        <result column="NICKNAME" property="nickName"/>
+        <result column="SIGN" property="sign"/>
+        <result column="ICON" property="icon"/>
+    </resultMap>
+
+
+    <select id="getBloggerById" resultMap="Blogger">
+        SELECT USERNAME,PASSWORD,PROFILE,NICKNAME,SIGN,ICON FROM BLOGGER WHERE ID = #{ID}
+    </select>
+</mapper>
