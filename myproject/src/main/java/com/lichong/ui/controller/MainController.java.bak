@@ -23,7 +23,7 @@ public class MainController extends BaseController {
     }
 
     @RequestMapping(value = "/menu")
-    public String  menu(){
+    public String menu(){
         return "menu";
     }
 
